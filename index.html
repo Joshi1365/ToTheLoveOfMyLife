@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donde las mariposas deciden quedarse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Italiana&family=Joan&family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inria Sans', sans-serif;
+            margin: 0;
+            color: #5E3B0B;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .titulo-principal {
+            font-family: 'Lobster', serif;
+            font-size: 3.5em;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            color: #5E3B0B;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #5E3B0B;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.9em;
+        }
+
+        .contenido-principal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .secciones-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .seccion {
+            background-color: #5E3B0B;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 0 10px;
+            color: #fff;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .seccion a {
+            color: #F4EDBE;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.9em;
+        }
+
+        /* Footer general (usado en pagina-inicio) */
+        footer {
+            background-color: #FFFFDB;
+            color: #5E3B0B;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: center; /* Centra el contenido verticalmente */
+            margin-top: auto;
+            width: 100%; /* Asegura que ocupe todo el ancho */
+            box-sizing: border-box; /* Incluye padding y border en el ancho */
+        }
+
+        .footer-izquierda {
+            font-size: 0.8em;
+        }
+
+        .footer-derecha a {
+            color: #5E3B0B;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Estilos para la página principal (la página de la carta) */
+        .pagina-inicio {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            align-items: center;
+            /* Establece la imagen de fondo en la página de inicio */
+            background-image: url('imagenes/Nosotros.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pagina-inicio header {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #F9D696; /* Fondo beige para el encabezado */
+        }
+
+        .pagina-inicio .secciones-nav {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #D6D1B6; /* Fondo beige para la navegación */
+        }
+
+        .texto-derecha {
+            width: 60%;
+            font-family: 'Joan', serif;
+            font-size: 1.1em;
+            line-height: 1.5em;
+            text-align: justify;
+            background-color: rgba(94, 59, 11, 0.7); /* Fondo café con 70% de transparencia */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            color: #fff; /* Texto blanco */
+        }
+
+        .texto-carta {
+            margin-bottom: 20px;
+        }
+
+        .firma {
+            text-align: right;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Estilos para la página de "Retrato en Pausa" */
+        .pagina-retrato {
+            padding: 20px;
+            background-color: #f5f5dc;
+            color: #5E3B0B;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: none; /* Oculta la página por defecto */
+            position: relative; /* Asegura un posicionamiento relativo para los elementos internos */
+            /* Nueva imagen de fondo para Retrato en Pausa */
+            background-image: url('imagenes/pandas retrato.jpeg');  /* Aquí se define la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pagina-retrato h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: 'Joan', serif;
+        }
+
+        .pagina-retrato h3{
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-family: 'Joan', serif;
+        }
+
+        .pagina-retrato .imagen-retrato-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            box-sizing: border-box;
+            height: auto; /* Cambiado a auto para que la altura se ajuste al contenido */
+            position: relative; /* Permite posicionar el título absolutamente dentro de este contenedor */
+        }
+
+        .imagen-retrato-titulo {
+            font-family: 'Lobster', serif;
+            font-size: 2.5em;
+            color: #5E3B0B;
+            margin-bottom: 10px;
+            background-color: #5E3B0B; /* Fondo café para el título */
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            position: relative; /* Posicionamiento relativo */
+            top: auto;
+            left: auto;
+            transform: none;
+            z-index: 1; /* Asegura que el título esté por encima de la imagen */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añade sombra para mejorar la visibilidad */
+        }
+
+        .imagen-retrato-marco {
+            width: 80%; /* Reduce el ancho de la imagen */
+            height: auto;  /* Cambiado a auto para que la altura se ajuste al contenido */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinea la imagen en la parte superior del contenedor */
+            margin-top: 20px; /* Añade margen en la parte superior para separar del título */
+        }
+
+        .imagen-retrato-marco img {
+            width: 100%; /* La imagen ocupa el 100% del contenedor */
+            height: auto;
+            max-height: 800px; /* Establece una altura máxima */
+            object-fit: contain;
+            display: block; /* Elimina el espacio extra debajo de la imagen */
+        }
+
+        /* Estilos para la página de "Video" */
+        .pagina-video {
+            padding: 20px;
+            background-color: #f5f5dc;
+            color: #5E3B0B;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: none; /* Oculta la página por defecto */
+            /* Nueva imagen de fondo para Silencio... cámara... corazón */
+            background-image: url('imagenes/corazon.jpg');  /* Aquí se define la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pagina-video h2 {
+            font-size: 5em;
+            margin-bottom: 20px;
+             font-family: 'Joan', serif;
+        }
+
+        .pagina-video .video-container {
+            width: 80%; /* Ancho responsivo */
+            max-width: 400px; /* Limita el ancho máximo para simular formato móvil */
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            /* Elimina la altura fija del contenedor para que el video la dicte */
+        }
+
+        .pagina-video video {
+            width: 100%;
+            height: auto; /* La altura se ajustará automáticamente */
+            aspect-ratio: 9 / 16; /* Establece la relación de aspecto 9:16 (vertical) */
+            object-fit: cover; /* Asegura que el video cubra el área, recortando si es necesario */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Elimina max-height ya que aspect-ratio y width lo controlan */
+        }
+
+        /* Nuevo footer para la página de retrato */
+        .footer-retrato {
+            background-color: #5E3B0B; /* Color de los textos */
+            color: #F4EDBE; /* Color del texto del footer */
+            text-align: center;
+            padding: 30px 20px;
+            font-family: 'Lobster', serif;
+            font-size: 1.8em;
+            letter-spacing: 0.05em;
+            width: 100%;
+            margin-top: 40px; /* Margen superior para separarlo del contenido */
+            box-sizing: border-box;
+        }
+
+        /* Footer para la página de video (con la misma tipografía que el de retrato) */
+        .footer-video {
+            background-color: #5E3B0B; /* Color de los textos */
+            color: #F4EDBE; /* Color del texto del footer */
+            text-align: center;
+            padding: 30px 20px;
+            font-family: 'Lobster', serif; /* Misma tipografía que el footer-retrato */
+            font-size: 1.8em; /* Mismo tamaño de fuente */
+            letter-spacing: 0.05em; /* Mismo espaciado de letras */
+            width: 100%;
+            margin-top: 40px; /* Margen superior para separarlo del contenido */
+            box-sizing: border-box;
+        }
+
+        .mensaje-final {
+            margin: 0;
+        }
+
+        /* Estilos para el botón de subir al inicio */
+        .scroll-to-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #5E3B0B;
+            color: #F4EDBE;
+            border: none;
+            border-radius: 10px; /* Bordes ligeramente redondeados */
+            width: 60px; /* Ancho ajustado para el texto */
+            height: 60px; /* Altura ajustada */
+            font-size: 1.5em;
+            display: flex;
+            flex-direction: column; /* Apila el icono y el texto */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none; /* Oculto por defecto, se mostrará con JS */
+            padding: 5px; /* Espaciado interno */
+        }
+
+        .scroll-to-top-button .icon {
+            font-size: 1.8em; /* Tamaño del corazón */
+            line-height: 1; /* Elimina espacio extra */
+        }
+
+        .scroll-to-top-button .text {
+            font-size: 0.7em; /* Tamaño del texto "subir" */
+            margin-top: 2px; /* Espacio entre el corazón y el texto */
+            font-family: 'Inria Sans', sans-serif; /* Tipografía para el texto "subir" */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="titulo-principal">DONDE LAS MARIPOSAS DECIDEN QUEDARSE</h1>
+    </header>
+
+    <div class="secciones-nav">
+        <div class="seccion">
+            <a href="index.html">La letra pequeña de mi corazón</a>
+        </div>
+        <div class="seccion">
+            <a href="retrato.html" id="link-retrato">Retrato en pausa</a>
+        </div>
+        <div class="seccion">
+            <a href="video.html" id="link-video">Silencio... cámara... corazón</a>
+        </div>
+    </div>
+
+    <main class="pagina-inicio">
+        <div class="texto-derecha" >
+            <p class="texto-carta">
+                Diana,<br><br>
+                Hoy nos encontramos aquí, como tantas veces, y sin embargo, no es un día más. Hay en el aire una calma que anticipa lo extraordinario, como si el universo supiera que entre nosotros se está gestando algo que trasciende lo cotidiano. Conversamos, nos miramos, compartimos silencios que dicen más que las palabras. Pero, sobre todo, nos sentimos. Nos amamos.<br><br>
+                He llegado hasta aquí con la certeza de que este es el momento de abrir un nuevo capítulo. Uno distinto. Uno que no nace por costumbre, sino por convicción. Uno que, sin temor, me atrevo a llamar el mejor de mi vida.<br><br>
+                Estas palabras no buscan ser un simple homenaje al encuentro. Son un susurro al alma, una caricia al corazón. Quiero que sepas que en mí no habita otra intención que no sea la de amarte. Con una ternura sin tregua, con una fe que desafía el tiempo, con un deseo de eternidad que no se cansa. Porque contigo no busco un final feliz: contigo quiero un comienzo perpetuo.<br><br>
+                Hemos compartido tantas cosas: risas, enojos, aprendizajes, complicidades. Y aun en los momentos más difíciles, nunca dejé de luchar por estar cerca de ti. Has sido el refugio que no sabía que necesitaba. La paz después de todas mis guerras. Y yo, con toda la humildad de quien ama de verdad, solo deseo ser para ti lo que tú eres para mí: hogar.<br><br>
+                Dianita, qué fortuna la mía haberte encontrado. Haber sido primero tu amigo, y luego, poco a poco, descubrir que lo que sentía era algo más grande que cualquier amistad. Gracias por darme la oportunidad de mostrarte que el amor no siempre llega a la primera, pero cuando lo hace con verdad, se queda. Lucha. Florece. Y se entrega.<br><br>
+                No permitiré que el miedo, el pasado ni la rutina nos arrebaten esto que tanto anhelo construir contigo. Tú eres la respuesta a todas mis búsquedas, la promesa cumplida tras cada caída, el amor que no sabía que merecía… pero que hoy tengo frente a mí.<br><br>
+                Podría seguir escribiendo eternamente, porque lo que siento por ti no cabe en un puñado de palabras. Pero tal vez, lo más hermoso es que aún nos queda toda una vida para decirnos lo que no cabrá en ningún poema.<br><br>
+                Así que te invito a seguir leyendo. A hacer clic. A descubrir lo que sigue. Porque esto apenas comienza.<br><br>
+                Con todo mi amor,<br>
+                <p class="firma">De tu osi, José</p>
+            </p>
+        </div>
+        <button class="scroll-to-top-button" onclick="scrollToTop()">
+            <span class="icon">❤️</span>
+            <span class="text">Subir</span>
+        </button>
+    </main>
+
+    <main class="pagina-retrato">
+        <div class="imagen-retrato-container">
+            <h2 class="imagen-retrato-titulo">Mi visión de ti</h2>
+            <div class="imagen-retrato-marco">
+                <img src="imagenes/Mi visión de ti.png" alt="Retrato de Diana">
+            </div>
+        </div>
+        <footer class="footer-retrato">
+            <p class="mensaje-final">La forma en que mis ojos te miran, hermosa, feliz, llena de vida</p>
+        </footer>
+        <button class="scroll-to-top-button" onclick="scrollToTop()">
+            <span class="icon">❤️</span>
+            <span class="text">Subir</span>
+        </button>
+    </main>
+
+    <main class="pagina-video">
+        <h2>Proyección de un "Nosotros"</h2>
+        <div class="video-container">
+                <video controls>
+                    <source src="imagenes/video Di Fin.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+        </div>
+        <footer class="footer-video">
+            <p class="mensaje-final">FIN DE ESTA ESCENA... PERO EL COMIENZO DE NUESTRA HISTORIA</p>
+        </footer>
+        <button class="scroll-to-top-button" onclick="scrollToTop()">
+            <span class="icon">❤️</span>
+            <span class="text">Subir</span>
+        </button>
+    </main>
+
+    <script>
+        // Simulación de navegación a las páginas
+        const linkRetrato = document.querySelector('#link-retrato');
+        const linkVideo = document.querySelector('#link-video');
+        const paginaInicio = document.querySelector('.pagina-inicio');
+        const paginaRetrato = document.querySelector('.pagina-retrato');
+        const paginaVideo = document.querySelector('.pagina-video');
+
+        // Función para mostrar la página correcta y ocultar las demás
+        function showPage(pageToShow) {
+            paginaInicio.style.display = 'none';
+            paginaRetrato.style.display = 'none';
+            paginaVideo.style.display = 'none';
+            pageToShow.style.display = 'flex';
+            window.scrollTo(0, 0); // Desplaza al inicio de la página al cambiar
+        }
+
+        linkRetrato.addEventListener('click', (event) => {
+            event.preventDefault();
+            showPage(paginaRetrato);
+        });
+
+        linkVideo.addEventListener('click', (event) => {
+            event.preventDefault();
+            showPage(paginaVideo);
+        });
+
+        // Función para el botón de subir al inicio
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Desplazamiento suave
+            });
+        }
+
+        // Mostrar/ocultar el botón de subir al inicio
+        window.onscroll = function() {
+            const buttons = document.querySelectorAll('.scroll-to-top-button');
+            buttons.forEach(button => {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    button.style.display = 'flex';
+                } else {
+                    button.style.display = 'none';
+                }
+            });
+        };
+
+        // Mostrar la página de inicio por defecto al cargar
+        window.onload = function() {
+            showPage(paginaInicio);
+        };
+
+    </script>
+</body>
+</html>
